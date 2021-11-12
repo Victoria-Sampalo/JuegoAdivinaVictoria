@@ -20,13 +20,51 @@ public class JuegoAdivinaVictoria {
         //---VARIABLES A USAR
         int numVidas = 3;
         //----DEFINO MÉTODO SCANNER-----
-        System.out.println("num1" + num1);
+        Scanner sc = new Scanner(System.in);
+       
         
+        String opcion;
+        do {
+            mostrarMenu();
+            opcion = sc.nextLine();
 
+            switch (opcion) {
+                case "1":
+                   
+            //    leerDatos(numUser);
+                
+                   
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+
+                    break;
+                case "2":
+                    System.out.println("Adios");
+
+                    break;
+              
+                default:
+                    System.out.println("Opción no válida");
+            }
+           
+        } while (!opcion.equals("2"));
+
+    }
+    
+    private static void mostrarMenu() {
+        System.out.println("Juego de Adivinar");
+        System.out.println("1 - Jugar");
+        System.out.println("2 - salir");   
     }
 
     //---MÉTODO NÚMERO RANDOM-----
-    private static Random numRamdon(int num1, int num2) {
+    private static int numRandom(int num1, int num2) {
 
         //Creo objeto de clase tipo random
         Random numAleatorio = new Random();
@@ -36,16 +74,13 @@ public class JuegoAdivinaVictoria {
          System.out.println("La máquina ha elegido el:  " + numRandom );
          System.out.println("\n------------------\n");
          
-         return numAleatorio;
+         return numRandom;
     }
        
     //MÉTODO PEDIR POR TECLADO AL USUARIO 2 NÚMEROS
-      private static int leerDatos(){
+      private static int leerDatos(int numUser){
         Scanner sc = new Scanner(System.in);
 
-        //----------VARIABLES A USAR--------
-        int num1 = 0;
-        int num2 = 0;
         boolean seguir = true;
         
         do {
@@ -54,8 +89,8 @@ public class JuegoAdivinaVictoria {
                 try {
                     
                     System.out.println("Introduzca un número");
-                    num1 =sc.nextInt();
-                    num2=sc.nextInt();
+                    numUser =sc.nextInt();
+                    
                     seguir=false; 
                     
 
@@ -65,14 +100,14 @@ public class JuegoAdivinaVictoria {
                             + "inténtalo de nuevo");
                     //limpiamos el buffer
                     sc.nextLine();
-                    sc.nextLine();
+                    
                     //Ahora mismo no tengo un bucle, me dice donde me equivoqué limpia el buffer y ya esta, falta do while
-                } //no ;
+                } 
             } while (seguir); //hasta que los datos esten correctos
             //bucle que controle la excepcion 
             
         
-        return num1+num2;
+        return numUser;
     }
     
     
