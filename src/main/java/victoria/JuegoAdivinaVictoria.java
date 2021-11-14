@@ -21,8 +21,9 @@ public class JuegoAdivinaVictoria {
         //---VARIABLES A USAR
         int numVidas = 3;
         int num1, num2 = 0, numRango = 0, numRandom; 
+       
         int numGenerado;
-        boolean mayorQue = true; 
+       
         //----DEFINO MÉTODO SCANNER-----
         Scanner sc = new Scanner(System.in);
         
@@ -43,28 +44,27 @@ public class JuegoAdivinaVictoria {
                     num1 = leerNumero(numRango);
                     System.out.println("Introduce el 2º número para finalizar el rango");
                     
-                do{
+                do{ //do while que permite que se repita si el seguno digito es menor que el primero
                     num2 = leerNumero(numRango);
                     //condición si num1 es menor que  num2, ejemplo 1-10
                     if(num1 < num2){ 
-                    mayorQue = true; 
+                    
                     
                     System.out.println("Has definido el rango de " + num1 + "-" + num2);
                    }else {
                         System.out.println("El número 2 debe de ser mayor que 1\n"
                                 + "Vuelve a definir un fin del rango");
-                       // mayorQue = false;
+                       
                        
                     }
-                } while (!mayorQue); //
+                } while (!(num1 < num2)); //
                     
                     
-                    System.out.println("Ha continuado el programa"); 
-                  //  System.out.println(numAleatorio(numRandom));
-                //FALLO LÍNEA 65 illegal argumentException
-                    numRandom = numAleatorio(num1, num2);
-                      System.out.println(numRandom);
+                    System.out.println("Empezamos el juego"); 
                     
+                    numGenerado = numAleatorio(numRandom);
+                   
+                  
                     
                     break;
 
@@ -83,18 +83,20 @@ public class JuegoAdivinaVictoria {
     }
     
     private static void mostrarMenu() {
-        System.out.println("Juego de Adivinar");
+        System.out.println("\n------------------\nJuego de Adivinar\n------------------\n");
         System.out.println("1 - JUGAR");
         System.out.println("2 - SALIR");   
     }
 
     //---MÉTODO NÚMERO RANDOM-----
-    private static int numAleatorio(int num1, int num2) {
+    private static int numAleatorio(int numRandom, int num1, int num2) {
 
         //Creo objeto de clase tipo random
         Random numAleatorio = new Random();
-        
-        int numRandom = numAleatorio.nextInt(num1 - num2 + 1) + num2;
+        int numRango = 0;
+        num1= leerNumero(numRango);
+        num2= leerNumero(numRango);
+        numRandom = numAleatorio.nextInt(num1 - num2 + 1) + num2;
 
          System.out.println("La máquina ha elegido el:  " + numRandom );
          System.out.println("\n------------------\n");
@@ -102,7 +104,7 @@ public class JuegoAdivinaVictoria {
          return numRandom;
     }
        
-    //MÉTODO PEDIR POR TECLADO AL USUARIO 2 NÚMEROS
+    //MÉTODO PEDIR POR TECLADO AL USUARIO NÚMEROS ENTEROS
       private static int leerNumero(int numRango){
         Scanner sc = new Scanner(System.in);
 
